@@ -5,7 +5,7 @@ metadata:
         - "Std_Sol_Engagement_User_Read"
     requestor: "gandalf.thewhite@thewizardscouncil.org"
     requestTime: "20/06/22"
-    policyVersion: "1.0"
+    policyVersion: "2.0"
     solutionName: "Tolkien"
 policies:
     tolkien_adf_nifi_pipeline_spn_readwrite_1:
