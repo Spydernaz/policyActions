@@ -1,0 +1,38 @@
+version: "4.0"
+metadata:
+    templatesUsed:
+        - "NiFi_Pipeline_SPN_ReadWrite"
+        - "Std_Sol_Engagement_User_Read"
+    requestor: "gandalf.thewhite@thewizardscouncil.org"
+    requestTime: "20/06/22"
+    policyVersion: "1.0"
+    solutionName: "Tolkien"
+policies:
+    tolkien_adf_nifi_pipeline_spn_readwrite_1:
+        name: "Tolkien ADF Nifi Pipeline SPN Read/Write Policy"
+        template: "NiFi_Pipeline_SPN_ReadWrite"
+        technology: "ADF"
+        scopes: 
+            source_1:
+                resourceType: table
+                resourceName: mordor.mountRuapehu
+            source_2:
+                resourceType: table
+                resourceName: mordor.torechUngol
+        principalName: "frodo.baggins@middle.earth"
+    tolkien_immuta_std_sol_engagement_user_read_1:
+        name: "Tolkien Immuta Std User Read Policy"
+        template: "Std_Sol_Engagement_User_Read"
+        technology: "Immuta"
+        appliedToUserStrategy: "attribute-based"
+        dsl: true
+        condition: "@hasTagAsAttribute('UsagePattern', 'dataSource') AND @hasTagAsAttribute('Country', 'dataSource')"
+        allowDiscovery: false
+        requireManualSubscription: false
+        exemptionRequest: false
+        responsibility: "shared"
+        appliedToDataStrategy: "datasources-tagged"
+        dataStrategyLogicalCondition: "AND"
+        dataTags:
+            - "ClientData>EngagementId"
+            - "ClientData>SolutionName>Tolkien"
