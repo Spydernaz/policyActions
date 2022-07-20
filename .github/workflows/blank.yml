@@ -19,6 +19,7 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
+            echo "there is a file that has changed"
             echo "Do something with this ${changed_file}."
           done
 
